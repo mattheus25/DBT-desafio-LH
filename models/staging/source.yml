@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: source
+    description: dados brutos das adventure works 
+    database: ADW
+    schema: raw_adventure_works
+    tables:
+      - name: salesorderheader
+        description: General sales order information.
+        columns:
+          - name: salesorderid
+            description: Primary key of the salesorderheader table
+            tests:
+              - unique
+              - not_null
