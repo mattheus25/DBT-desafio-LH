@@ -36,11 +36,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  my_project:
+  my_new_project:
     staging:
-      schema: dev_staging
       +materialized: view
     marts:
       schema: prod_marts
       +materialized: table
+      +schema: prod_marts
 
