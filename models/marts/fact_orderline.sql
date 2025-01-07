@@ -1,3 +1,8 @@
+{{
+    config(
+        materialized='view'
+    )
+}}
 with 
     order_ as (
         select *
@@ -14,7 +19,9 @@ with
 
     , orderline as (
         select
-            order_.order_date
+            {{ dbt_utils.generate_surrogate_key(['order_.order_id', 'order_itens.order_detail_id']) }} as sk_orderline
+            , to_varchar(date(order_.order_date), 'YYYYMMDD') AS date_sk
+            , order_.order_date
             , order_.order_id  
             , order_itens.order_detail_id 
             , order_.customer_id 
@@ -24,8 +31,12 @@ with
             , order_itens.product_id 
             , order_itens.unit_price 
             , order_itens.unit_price_discount
+            , order_itens.unit_price * order_itens.order_qty as gross_amount
             , order_itens.unit_price * (1 - order_itens.unit_price_discount) * order_itens.order_qty as net_amount
-
+            , order_.subtotal
+            , order_.taxamt
+            , order_.freight
+            , order_.total_due
         from order_
         left join order_itens on order_.order_id = order_itens.order_id
         left join card on order_.creditcard_id = card.creditcard_id

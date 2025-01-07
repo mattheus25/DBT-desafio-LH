@@ -6,7 +6,7 @@ with
 
     , new_sales_order_header as (
         select
-            salesorderid as sales_order_id
+            salesorderid as order_id
             , salesreasonid as sales_reason_id
         from salesorderheadereason
 )
