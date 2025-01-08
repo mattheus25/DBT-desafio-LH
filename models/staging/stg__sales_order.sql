@@ -7,7 +7,7 @@ with
     , new_sales_order as (
         select 
             salesorderid as order_id 
-            , orderdate as order_date
+            , to_date(orderdate) as order_date
             , onlineorderflag as online_flag
             , customerid as customer_id 
             , salespersonid as sales_person_id

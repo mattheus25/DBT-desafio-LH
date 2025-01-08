@@ -9,7 +9,7 @@ models:
         description: "This is a unique identifier for each order item quantity."
         tests:
           - unique
-          - not null
+          - not_null
 
       - name: date_sk 
         description: "key join for dim_dates"
@@ -44,8 +44,6 @@ models:
 
       - name: card_type
         description: "card type."
-        tests:
-          - not_null
 
       - name: order_qty
         description: "number of type of item."

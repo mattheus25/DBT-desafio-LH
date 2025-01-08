@@ -1,8 +1,3 @@
-{{
-    config(
-        materialized='view'
-    )
-}}
 with 
     customer as (
         select *
@@ -39,7 +34,8 @@ with
 
     , production as (
         select
-            customer.customer_id
+            {{ dbt_utils.generate_surrogate_key([ 'order_itens.order_detail_id']) }} as sk_production
+            , customer.customer_id
             , store_id 
             , store_name
             , order_.order_id

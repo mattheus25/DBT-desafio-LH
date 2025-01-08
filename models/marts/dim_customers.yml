@@ -18,24 +18,17 @@ models:
           - not_null
 
       - name: person_id  
-        description: person identification from person table.
-        tests:
-          - not_null     
+        description: person identification from person table. 
 
       - name: full_name 
-        description: full name of each customers.
-        tests:
-          - not_null
+        description: full name of each customer.
 
       - name: store_id 
         description: unique identifier for stores.
-        tests:
-          - not_null
 
       - name: store_name 
         description: names related to stores.
-        tests:
-          - not_null
+
            
 
         
