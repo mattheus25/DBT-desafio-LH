@@ -31,7 +31,6 @@ with
             , order_itens.product_id 
             , order_itens.unit_price 
             , order_itens.unit_price_discount
-            , order_itens.unit_price * order_itens.order_qty as gross_amount
             , order_itens.unit_price * (1 - order_itens.unit_price_discount) * order_itens.order_qty as net_amount
             , order_.subtotal
             , order_.taxamt

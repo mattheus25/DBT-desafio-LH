@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: dim_products 
+    description: This table contains products information. 
+
+    columns:
+      - name: product_id
+        description: primary key for product table
+        tests:
+          - unique
+          - not_null
+
+      - name: product_name 
+        description: name of the product.
+        tests:
+          - not_null
+
+      - name: product_number 
+        description: product serial number product.
+
+      - name: make_flag 
+        description: "	0 = Product is purchased, 1 = Product is manufactured in-house."
+
+      - name : finished_good_flags
+        description: "0 = Product is not a salable item. 1 = Product is salable"
+
+      - name : color
+        description: "Product color"
+
+      - name: safety_stock_level
+        description: "Minimum inventory quantity."
+
+      - name: reoder_point
+        description: "Inventory level that triggers a purchase order or work order."
+
+      - name: standart_cost
+        description: "Standard cost of the product."
+
+      - name: list_price
+        description: "selling price"
+
+      - name: size
+        description: "Product size."
+
+      - name: size_unit_measure_cod
+        description: "Unit of measure for Size column."
+
+      - name: weight
+        description: "Product weight."
+
+      - name: days_to_manufacture
+        description: "number of days to manufacture"
+
+      - name: product_line
+        description: "R = Road, M = Mountain, T = Touring, S = Standard"
+        
+      - name: class
+        description: "H = High, M = Medium, L = Low"
+
+      - name: style
+        description: "W = Womens, M = Mens, U = Universal"
+
+      - name: product_subcategory
+        description: "Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID."
+
+      - name: product_model_id
+        description: "Product is a member of this product subcategory."
+      
+      - name: sell_start_date
+        description: "date in which the product started to be selled"
+      
+      
+      

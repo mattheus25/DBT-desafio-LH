@@ -99,6 +99,8 @@ with
             , full_address
             , state
             , round(cltv,2) as cltv
+            , first_purchase
+            , last_purchase
             , round(datediff('day', first_purchase, last_purchase) / 30.44, 1) as customer_lifetime_months
         from agg_customers
         where cltv is not null 

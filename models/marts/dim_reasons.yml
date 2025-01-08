@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_reason 
+    description: This table contains information about reasons purchase. 
+
+    columns:
+      - name: order_id
+        description: "orders identifier"
+        tests:
+          - not_null
+
+      - name: sales_reason_id 
+        description: "reason for the purchase."
+        tests:
+          - not_null
+
+      - name: reason_name 
+        description: "reason name for the purchase."
+        tests:
+          - not_null
+
+      - name: reason_type
+        description: "type of the reason"
+        tests:
+          - not_null

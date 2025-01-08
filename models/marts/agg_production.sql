@@ -1,3 +1,8 @@
+{{
+    config(
+        materialized='view'
+    )
+}}
 with 
     customer as (
         select *
@@ -37,6 +42,7 @@ with
             customer.customer_id
             , store_id 
             , store_name
+            , order_.order_id
             , order_itens.order_detail_id
             , order_itens.order_qty
             , order_itens.unit_price
@@ -44,7 +50,11 @@ with
             , order_itens.unit_price_discount
             , product.product_name
             , state_province.state_province_code
-            , state_province.state_or_province_name as state
+            , state_province.state_or_province_name as state_or_province_name
+            , case 
+                when province_flag = 'false' then 1
+                else 0 
+              end as province_st_flag
             , country_region.country_name
             , country_region.country_code 
         from customer
@@ -54,6 +64,6 @@ with
         left join product on order_itens.product_id = product.product_id
         left join address on order_.bill_to_address_id = address.address_id
         left join state_province on address.stateprovince_id = state_province.stateprovince_id
-        left join country_region on state_province.country_region_code = country_region.country_code 
+        left join country_region on state_province.country_region_code = country_region.country_code
     )
 select * from production 

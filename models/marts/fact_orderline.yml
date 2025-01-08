@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: fact_orderline 
+    description: This table contains order itens information. 
+
+    columns:
+      - name: sk_orderline
+        description: "This is a unique identifier for each order item quantity."
+        tests:
+          - unique
+          - not null
+
+      - name: date_sk 
+        description: "key join for dim_dates"
+        tests:
+          - not_null
+
+      - name: order_date 
+        description: "date in which order item was purchased."
+        tests:
+          - not_null
+
+      - name: order_id 
+        description: " order identification."
+        tests:
+          - not_null
+
+      - name: order_detail_id
+        description: "stands for each item quantity"
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id 
+        description: "customer identification, fk to customers table."
+        tests:
+          - not_null
+        
+      - name: bill_to_address_id 
+        description: "customer order location."
+        tests:
+          - not_null
+
+      - name: card_type
+        description: "card type."
+        tests:
+          - not_null
+
+      - name: order_qty
+        description: "number of type of item."
+        tests:
+          - not_null
+
+      - name: unit_price 
+        description: price of each item.
+        tests:
+          - not_null
+
+      - name: unit_price_discount 
+        description: "Discount amount."
+        
+      - name: net_amount  
+        description: "unit price after discount."
+
+      - name: subtotal  
+        description: "subtotal price for each item"
+
+      - name: subtotal  
+        description: "Tax amount."
+
+      - name: freight   
+        description: "Shipping cost."
+
+      - name: total_due   
+        description: "Total due from customer. Computed as Subtotal + TaxAmt + Freight."
