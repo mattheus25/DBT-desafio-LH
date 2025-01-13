@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_location 
+  - name: dim_locations 
     description: This table contains information about bill address location. 
 
     columns:

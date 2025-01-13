@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_reason 
+  - name: dim_reasons 
     description: This table contains information about reasons purchase. 
 
     columns:
