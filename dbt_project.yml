@@ -40,7 +40,7 @@ models:
     staging:
       +materialized: view
     marts:
-      schema: prod_marts
+      schema: DBT_DEV_MATTHEUS_PROD_MARTS
       +materialized: table
       +schema: prod_marts
 
