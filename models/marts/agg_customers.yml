@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: agg_customers 
+    description: This table contains information about customers. 
+
+    columns:
+      - name: customer_id 
+        description: "This is a unique identifier for each customer"
+        tests:
+          - unique
+          - not_null
+
+      - name: full_name
+        description: "customer full address."
+
+      - name: country_name 
+        description: "customer's country."
+
+      - name: full_address
+        description: "customer full address."
+
+      - name: state
+        description: "state name"
+
+      - name: cltv
+        description: "customer lifetime value.It refers to how much a customer spent overall."
+
+      - name: first_purchase
+        description: "first time a customer have purchase."
+
+      - name: last_purchase. 
+        description: "the last date a customer bought something."
+
+      - name: customer_lifetime_months 
+        description: "it refers to an amount of time that a customer have been a customer."

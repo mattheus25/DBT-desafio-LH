@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: agg_production 
+    description: aggregate store level.   
+
+    columns:
+      - name: sk_production
+        description: "unique identification for each orderline"
+
+      - name: customer_id 
+        description: "This is a unique identifier for each customer"
+
+      - name: store_id
+        description: "store id"
+
+      - name: store_name 
+        description: "name of the stores"
+
+      - name: order_id
+        description: "identification for each order"
+
+      - name: order_detail_id
+        description: "order item identification"
+
+      - name: order_qty
+        description: "item quantity for each order"
+
+      - name: unit_price
+        description: "price for each item"
+
+      - name: order_date
+        description: "date in which an order was made"
+
+      - name: unit_price_discount
+        description: "discount for each item"
+
+      - name: product_name. 
+        description: "name for each product"
+
+      - name: state_province_code 
+        description: "state or province code."
+
+      - name: state_or_province_name 
+        description: "state or province name"
+
+      - name: province_st_flag 
+        description: "identification for province 1 = true, 0 = false"
+
+      - name: country_name
+        description: "country name"
+
+      - name: country_code
+        description: "country code"

@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: dim_location 
+    description: This table contains information about bill address location. 
+
+    columns:
+      - name: date_sk 
+        description: "key for joins using date_day."
+        tests:
+          - unique
+          - not_null
+          
+      - name: date_day
+        description: "unique identification for dim_dates."
+        tests:
+          - unique
+
+      - name: Date_start_month
+        description: "representation of month on format (yyyy/mm/dd)"
+        tests:
+          - not_null
+
+      - name: month_name_short
+        description: "representation of month on format (mmm)"
+        tests:
+          - not_null
+
+      - name: month_year
+        description: "combination of month and year on the format (mmm/yyyy)"
+        tests:
+          - not_null
+
+      - name: date_start_year
+        description: "representation of year on format (yyyy/mm/dd)" 
+        tests:
+          - not_null
+
+      - name: year_number
+        description: "representation of year on format (yyyy/mm/dd)" 
+        tests:
+          - not_null

@@ -1,0 +1,128 @@
+version: 2
+
+sources:
+  - name: sales_source # Unique source name for the sales schema
+    schema: sales
+    description: Raw data from Adventure Works (Sales Schema).
+    database: ADW
+    tables:
+      - name: customer
+        description: General customer information.
+        columns:
+          - name: customerid
+            description: Primary key of the customer table
+            tests:
+              - unique
+              - not_null
+      - name: salesorderheader
+        description: General sales order information.
+        columns:
+          - name: salesorderid
+            description: Primary key for each sales.
+            tests:
+              - unique
+              - not_null
+      - name: salesorderheadersalesreason
+        description: Cross-reference table mapping sales orders to sales reason codes.
+        columns:
+          - name: "salesorderid || '-' || salesreasonid"
+            description: Primary key for salesheadersalesreason.
+            tests:
+              - unique
+              - not_null
+      - name: salesorderdetail
+        description: Individual products associated with a specific sales order. See SalesOrderHeader.
+        columns:
+          - name: salesorderdetailid
+            description: Individual products associated with a specific sales order. See SalesOrderHeader.
+            tests:
+              - unique
+              - not_null        
+      - name: store
+        description: customers (resellers) of Adventure Works products.
+        columns:
+          - name: businessentityid
+            description: Primary key for store tables.
+            tests:
+              - unique
+              - not_null
+      - name: salesreason
+        description: reason for each purchase 
+        columns:
+          - name: salesreasonid
+            description: Primary key for salesreason table.
+            tests:
+              - unique
+              - not_null
+      - name: creditcard
+        description: Customer credit card information.
+        columns:
+          - name: creditcardid
+            description: primarykey for the credicard records.
+            tests:
+              - unique
+              - not_null
+
+  - name: person_source # Unique source name for the person schema
+    schema: person
+    description: Raw data from Adventure Works (Person Schema).
+    database: ADW
+    tables:
+      - name: person
+        description: Human beings involved with adventure works:employees, customer contacts, and vendor contacts.
+        columns:
+          - name: businessentityid
+            description: Primary key for Person records.
+            tests:
+              - unique
+              - not_null
+
+      - name: address
+        description: Street address information for customers, employees, and vendors.
+        columns:
+          - name: addressid
+            description: Primary for address records.
+            tests:
+              - unique
+              - not_null
+
+      - name: countryregion
+        description: Lookup table containing the ISO standard codes for countries and regions.
+        columns:
+          - name: Countryregioncode
+            description: ISO standard code for countries and regions.
+            tests:
+              - unique
+              - not_null
+
+      - name: stateprovince
+        description: State and province lookup table.
+        columns:
+          - name: stateprovinceid
+            description: ISO standard code for countries and regions.
+            tests:
+              - unique
+              - not_null
+  - name: production_source # Unique source name for the person schema
+    schema: production
+    description: Raw data from Adventure Works (Production Schema).
+    database: ADW
+    tables:
+
+      - name: product
+        description: Products sold or used in the manfacturing of sold products.
+        columns:
+          - name: ProductID
+            description: primary key for the tables product
+            tests:
+              - unique
+              - not_null
+
+      - name: productcategory
+        description: High-level product categorization.
+        columns:
+          - name: 	productcategoryid
+            description: primary key for the tables product
+            tests:
+              - unique
+              - not_null

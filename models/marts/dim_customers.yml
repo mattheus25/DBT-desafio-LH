@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: dim_customers 
+    description: This table contains information about customers. 
+
+    columns:
+      - name: customer_id 
+        description: This is a unique identifier for each customer
+        tests:
+          - unique
+          - not_null
+
+      - name: sk_customer 
+        description: unique identifier for concatenation between customer_id and person_id.
+        tests:
+          - unique
+          - not_null
+
+      - name: person_id  
+        description: person identification from person table. 
+
+      - name: full_name 
+        description: full name of each customer.
+
+      - name: store_id 
+        description: unique identifier for stores.
+
+      - name: store_name 
+        description: names related to stores.
+
+           
+
+        
+
+          
