@@ -50,11 +50,6 @@ models:
         description: "code for each country."
         tests:
           - not_null
-
-      - name: state_name
-        description: "name of each state" 
-        tests:
-          - not_null
         
       - name: country_name 
         description: "name for each country"
