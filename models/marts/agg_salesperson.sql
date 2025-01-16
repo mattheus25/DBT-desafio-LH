@@ -25,20 +25,22 @@ with
 )
     , sales_per_seller as (
         select
-            salesperson.sales_person_id
+            {{ dbt_utils.generate_surrogate_key(['sales_person_id', 'territoryid']) }} as sk_seller_per_region
+            , sales_person_id
             , person.full_name
+            , territoryid
             , country_name
-            , count(*) as num_sales
-        from salesperson 
-        left join person on salesperson.sales_person_id = person.business_entity_id
-        left join sales_order on salesperson.sales_person_id = sales_order.sales_person_id
-        left join address on sales_order.bill_to_address_id = address.address_id
-        left join state_province on address.stateprovince_id = state_province.stateprovince_id
-        left join country s on state_province.country_region_code = state_province.country_region_code
-        group by
-            salesperson.sales_person_id
+            , count(order_id) as num_sales
+        from sales_order
+        left join person on sales_order.sales_person_id = person.business_entity_id
+        left join state_province on sales_order.territoryid = state_province.territory_id
+        left join country on state_province.country_region_code = country.country_code
+        group by 
+            sales_person_id
             , person.full_name
+            , territoryid
             , country_name
 )
 
 select * from sales_per_seller
+
