@@ -14,6 +14,15 @@ sources:
             tests:
               - unique
               - not_null
+
+      - name: salesperson
+        description: General customer information.
+        columns:
+          - name: businessentityid
+            description: Primary key of the customer table
+            tests:
+              - unique
+              - not_null
       - name: salesorderheader
         description: General sales order information.
         columns:
