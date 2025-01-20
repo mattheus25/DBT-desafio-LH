@@ -1,4 +1,4 @@
--- tests/test_fact_orderline_gross_revenue_2011.sql
+-- tests/test_number_of_orders.sql
 
 with 
     orderline as (
